@@ -816,14 +816,15 @@ Function SheetMetalModel_Process(rootModel As SldWorks.ModelDoc2, sheetMetalMode
                         
                         outed = True
                         
+                        SheetMetalModel_Process.Width = GetPropertyValue(swCutListFeat.CustomPropertyManager, SHEETMETAL_WIDTH_PROPERTYNAME)
+                        SheetMetalModel_Process.OutFileName = OutFileName
+
                         If Not SKIP_EXISTING_FILES Or Not FileExists(OutFileName) Then
                             If Not IS_TEST Then
                                 ExportFlatPattern sheetMetalModel, swFlatPatternFeat, OutFileName, FLAT_PATTERN_OPTIONS, conf
                             End If
                         End If
                         
-                        SheetMetalModel_Process.Width = GetPropertyValue(swCutListFeat.CustomPropertyManager, SHEETMETAL_WIDTH_PROPERTYNAME)
-                        SheetMetalModel_Process.OutFileName = OutFileName
                     End If
                     
                 Else
